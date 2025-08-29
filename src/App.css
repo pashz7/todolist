@@ -1,0 +1,21 @@
+
+
+.app {  display: flex;  flex-direction: column;  width: 100vw;}
+
+.task {
+  font-weight: bold;
+}
+.task-done {
+
+  text-decoration: line-through;
+}
+
+.btn-filter-active {
+  background-color: coral;
+  border: 2px solid coral;
+  color: white;
+}
+.taskInputError {
+  outline: none;
+  border: 2px solid red;
+}
