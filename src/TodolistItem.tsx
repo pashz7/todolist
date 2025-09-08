@@ -22,7 +22,7 @@ type Props = {
     deleteTodolist: (todolistID: Todolist["id"]) => void
     todolistID: Todolist["id"]
     changeTaskTitle: (todolistID: Todolist["id"], TaskId: string, newTitle: Task['title']) => void
-   changeTodoListTitle: (todolistID:Todolist['id'], newTitle: string) => void
+    changeTodoListTitle: (todolistID: Todolist['id'], newTitle: string) => void
 
 }
 
@@ -63,53 +63,54 @@ export const TodolistItem = ({
             {
                 tasks.map(t => {
                     const changeTaskTitleHandler = (title: string) => {
-                        changeTaskTitle(todolistID,t.id,title)
+                        changeTaskTitle(todolistID, t.id, title)
                     }
                     return (
                         <li>
-                            <Checkbox checked={t.isDone} onChange={(e) => changeTaskStatus(t.id, e.currentTarget.checked, todolistID)}/>
+                            <Checkbox checked={t.isDone}
+                                      onChange={(e) => changeTaskStatus(t.id, e.currentTarget.checked, todolistID)}/>
                             <span className={t.isDone ? "task-done" : "task"}><EditableSpan title={t.title}
 
                                                                                             changeItemTitle={changeTaskTitleHandler}/></span>
-
 
 
                             <IconButton
                                 title="x"
                                 onClick={() => deleteTask(t.id, todolistID)}
 
-                            ><DeleteIcon />
-                                </IconButton>
+                            ><DeleteIcon/>
+                            </IconButton>
                         </li>
                     )
                 })
             }
         </ul>
 
-const changeTodoListItemHandler = (newTitle: string) => changeTodoListTitle(todolistID,newTitle)
+    const changeTodoListItemHandler = (newTitle: string) => changeTodoListTitle(todolistID, newTitle)
     return (
         <div>
             <h3>
-                <Button variant={"contained"} size={"small"} title="delete TODO" onClick={() => deleteTodolist(todolistID)}/>
+                <Button variant={"contained"} size={"small"} title="delete TODO"
+                        onClick={() => deleteTodolist(todolistID)}/>
                 <EditableSpan title={title} changeItemTitle={changeTodoListItemHandler}/>
 
             </h3>
             <AddItemForm maxTitleLength={10} createItem={createTaskHanler}/>
             {tasksList}
             <Box sx={{display: "flex", justifyContent: "space-between"}}>
-                <Button  onClick={() => changeTodolistFilter("all", todolistID)}
+                <Button onClick={() => changeTodolistFilter("all", todolistID)}
                         variant="contained"
-                         size="small"
-                         color={filter === "all" ? "secondary" : "primary"}>ALL</Button>
+                        size="small"
+                        color={filter === "all" ? "secondary" : "primary"}>ALL</Button>
 
-                <Button  onClick={() => changeTodolistFilter("active", todolistID)}
-                         variant="contained"
-                         size="small"
-                         color={filter === "active" ? "secondary" : "primary"}>Active</Button>
-                <Button  onClick={() => changeTodolistFilter("completed", todolistID)}
-                         variant="contained"
-                         size="small"
-                         color={filter === "completed" ? "secondary" : "primary"}>Completed</Button>
+                <Button onClick={() => changeTodolistFilter("active", todolistID)}
+                        variant="contained"
+                        size="small"
+                        color={filter === "active" ? "secondary" : "primary"}>Active</Button>
+                <Button onClick={() => changeTodolistFilter("completed", todolistID)}
+                        variant="contained"
+                        size="small"
+                        color={filter === "completed" ? "secondary" : "primary"}>Completed</Button>
             </Box>
         </div>
     )
