@@ -52,6 +52,7 @@ export const TodolistItem = ({
 
     // const {tasks, title} = props
     const createTaskHanler = (taskTitle: string) => {
+       debugger
         createTask(taskTitle, todolistID)
 
     }
@@ -68,7 +69,8 @@ export const TodolistItem = ({
                     return (
                         <li>
                             <Checkbox checked={t.isDone}
-                                      onChange={(e) => changeTaskStatus(t.id, e.currentTarget.checked, todolistID)}/>
+
+                                      onChange={ (e) =>  changeTaskStatus(t.id, e.currentTarget.checked, todolistID)}/>
                             <span className={t.isDone ? "task-done" : "task"}><EditableSpan title={t.title}
 
                                                                                             changeItemTitle={changeTaskTitleHandler}/></span>
