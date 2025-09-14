@@ -38,7 +38,7 @@ export type TasksState = {
 
 export const selectTodolists = (state: RootState): Todolist[] => state.todolists
 export const selectTasks = (state: RootState): TasksState => state.tasks
-// CRUD => R, D => C, U
+
 function App() {
 
    const todolists = useAppSelector(selectTodolists)
@@ -48,33 +48,14 @@ const dispatch = useAppDispatch()
 
 
     const deleteTask = (taskId: Task["id"], todolistID: Todolist["id"]) => {
-        // create next state
-        // immutable change data
-        // const nextState = {...tasks, [todolistID]: tasks[todolistID].filter(t => t.id !== taskId)}
-        // // set next state
-        // setTasks(nextState);
         dispatch(deleteTaskAt({taskID: taskId, todolistID: todolistID}))
     }
+
     const createTask = (title: Task["title"], todolistID: Todolist["id"]) => {
-        // const newTask: Task = {
-        //     id: v1(),
-        //     title: title,
-        //     isDone: false
-        // }
-        // const nextState = {
-        //     ...tasks, [todolistID]: [...tasks[todolistID], newTask]
-        // }
-        // setTasks(nextState)
        dispatch(createTaskAt({title: title, todolistID: todolistID}))
-
     }
-    const changeTaskStatus = (taskID: Task["id"], newTaskStatus: Task["isDone"], todolistId: Todolist["id"]) => {
 
-        // const nextState = {
-        //     ...tasks,
-        //     [todolistID]: tasks[todolistID].map(t => t.id === TaskId ? {...t, isDone: newTaskStatus} : t)
-        // }
-        // setTasks(nextState)
+    const changeTaskStatus = (taskID: Task["id"], newTaskStatus: Task["isDone"], todolistId: Todolist["id"]) => {
         dispatch(changeTaskStatusAT({taskID: taskID, status: newTaskStatus, todolistId: todolistId}))
     }
 
@@ -86,14 +67,11 @@ const dispatch = useAppDispatch()
        dispatch(DeleteTodolistAT({id: todolistID}))
 
     }
+
     const changeTaskTitle = (todolistID: Todolist["id"], taskId: string, newTitle: Task['title']) => {
-        // const nextState = {
-        //     ...tasks,
-        //     [todolistID]: tasks[todolistID].map(t => t.id === TaskId ? {...t, title: newTitle} : t)
-        // }
-        // setTasks(nextState)
         dispatch(changeTaskTitleAT({todolistID: todolistID, taskId: taskId, newTitle }))
     }
+
 
     const getFilteredTasks = (tasks: Task[], filter: FilterValues): Task[] => {
         let filteredTasks = tasks
