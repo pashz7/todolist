@@ -24,7 +24,7 @@ import {
     DeleteTodolistAT
 } from "./model/todolists-reducer.ts";
 
-
+console.log("123")
 export type FilterValues = "all" | "active" | "completed"
 
 export type Todolist = {
