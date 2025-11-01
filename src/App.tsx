@@ -47,8 +47,7 @@ function App() {
     })
 
 
-
-
+    console.log(tasks)
 
 
 
